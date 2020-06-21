@@ -7,6 +7,9 @@ function App() {
     <Router>
       <div>
         <Switch>
+          <Route exact path="/">
+            <h1>Hello world</h1>
+          </Route>
           <Route path="/scan">
             <ScanPage></ScanPage>
           </Route>
