@@ -6,4 +6,9 @@ export interface UserData {
   cardId: string;
   cardName: string;
   email: string;
+  avatarUrl?: string;
+  quoute?: string;
+  sex?: string;
+  ocupation?: string;
+  age?: number;
 }
