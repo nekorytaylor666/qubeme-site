@@ -42,6 +42,8 @@ const ScanPage = () => {
           phoneNumber: data.phoneNumber,
           speciality: data.speciality,
           uid: data.uid,
+          bio: data.bio,
+          companyName: data.companyName,
         });
       }
     };

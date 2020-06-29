@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import InfoItem from '../../molecules/InfoItem';
 import { UserData } from '../../../shared/user.types';
 import { SizedBox } from '../../molecules/InfoItem';
-
+import Avatar from '../../../img/no-avatar-png-2.png';
 interface BioInfoProps {
   user: UserData;
 }
@@ -12,8 +12,12 @@ const billGatesAvatarUrl =
   'https://images.squarespace-cdn.com/content/v1/56b75f108a65e2ee4f2f2bde/1455557293033-S86RZZK28KMB9LN01U0I/ke17ZwdGBToddI8pDm48kLVlQsWnKb8yQ-njTGvvwVtZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpywYmA9JcIkVfR2Sj3VHhbJNNdOSzy2vOZOnpP4GuMAFuTLNfwXZswKXyR9JPuUs_s/image-asset.jpeg?format=1000w';
 
 const BioInfo: React.FC<BioInfoProps> = ({ user }) => {
-  const avatarUrl = user.avatarUrl ?? billGatesAvatarUrl;
+  const avatarUrl = user.avatarUrl ?? Avatar;
   const quote = user.quoute ?? 'I don’t like being pooped at';
+  const speciality = user.speciality;
+  const company = user.companyName ? ' at ' + user.companyName : '';
+  const position = speciality + company;
+  console.log(speciality, position);
   return (
     <Horizontal>
       <div>
@@ -23,12 +27,16 @@ const BioInfo: React.FC<BioInfoProps> = ({ user }) => {
       <BioContainer>
         <TitleContainer>
           <Name>{user.fullName}</Name>
-          <Quote>{quote}</Quote>
+          {
+            // <Quote>{quote}</Quote>
+          }
         </TitleContainer>
         <div>
-          <InfoItem title="Position" value={user.speciality}></InfoItem>
-          <InfoItem title="Sex" value={user.sex ?? 'male'}></InfoItem>
-          <InfoItem title="Age" value={user.age ?? 21}></InfoItem>
+          <InfoItem title="Position" value={position}></InfoItem>
+          {
+            //   <InfoItem title="Sex" value={user.sex ?? 'male'}></InfoItem>
+            // <InfoItem title="Age" value={user.age ?? 21}></InfoItem>
+          }
         </div>
       </BioContainer>
     </Horizontal>
@@ -37,7 +45,7 @@ const BioInfo: React.FC<BioInfoProps> = ({ user }) => {
 
 const BioContainer = styled.div`
   display: grid;
-  grid-row-gap: 15px;
+  /* grid-row-gap: 15px; */
 `;
 
 const Quote = styled.h3`
@@ -53,12 +61,14 @@ const Name = styled.h1`
 
 const TitleContainer = styled.div`
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto;
+  /* grid-template-rows: auto auto; */
 `;
 
 const Horizontal = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 100%;
   grid-column-gap: 20px;
 `;

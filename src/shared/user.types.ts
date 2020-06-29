@@ -11,4 +11,6 @@ export interface UserData {
   sex?: string;
   ocupation?: string;
   age?: number;
+  bio?: string;
+  companyName?: string;
 }

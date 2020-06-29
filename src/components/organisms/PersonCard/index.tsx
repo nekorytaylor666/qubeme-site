@@ -5,13 +5,16 @@ import BioInfo from './BioInfo';
 import { CategoryTitle } from '../../atoms/CategoryTitle/index';
 import InfoItem from '../../molecules/InfoItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { device } from '../../../shared/mediaQueries';
+import CircleIcons from '../../atoms/ClickableCircleIcons/index';
 
 interface PersonCardProps {
   user: UserData;
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
+  console.log(user.email);
   return (
     <Wrapper>
       <Pane>
@@ -19,12 +22,12 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
           <div>
             <BioInfo user={user}></BioInfo>
             <div style={{ width: 'fit-content' }}>
-              <CategoryTitle>About</CategoryTitle>
-              <AboutText>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et unde quas accusamus quo officiis cumque,
-                dolores nemo? Quis quisquam, voluptatem consequatur, nesciunt ea nobis magnam asperiores aut distinctio
-                a temporibus!
-              </AboutText>
+              {user.bio && (
+                <React.Fragment>
+                  <CategoryTitle>About</CategoryTitle>
+                  <AboutText>{user.bio}</AboutText>
+                </React.Fragment>
+              )}
             </div>
           </div>
           <AdditionalContainer>
@@ -34,25 +37,17 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
                 <InfoItem title="E-mail" value="massalin@inbox.ru"></InfoItem>
                 <InfoItem title="Phone" value="+77019998892"></InfoItem>
               </div>
-              <div>
-                <CategoryTitle>Social Media</CategoryTitle>
-                <InfoItem title="Instagram" value="@isasasasasas"></InfoItem>
-                <InfoItem title="VK" value="@isasasasasas"></InfoItem>
-              </div>
+              {
+                //   <div>
+                //   <CategoryTitle>Social Media</CategoryTitle>
+                //   <InfoItem title="Instagram" value="@isasasasasas"></InfoItem>
+                //   <InfoItem title="VK" value="@isasasasasas"></InfoItem>
+                // </div>
+              }
             </ContactsContainer>
             <ActionsContainer>
-              <Circle>
-                <FontAwesomeIcon icon={faPhoneAlt} size="2x" color="#6550F7"></FontAwesomeIcon>
-              </Circle>
-              <Circle>
-                <FontAwesomeIcon icon={faPhoneAlt} size="2x" color="#6550F7"></FontAwesomeIcon>
-              </Circle>
-              <Circle>
-                <FontAwesomeIcon icon={faPhoneAlt} size="2x" color="#6550F7"></FontAwesomeIcon>
-              </Circle>
-              <Circle>
-                <FontAwesomeIcon icon={faPhoneAlt} size="2x" color="#6550F7"></FontAwesomeIcon>
-              </Circle>
+              <CircleIcons icon={faPhoneAlt} type="phone" phone={user.phoneNumber}></CircleIcons>
+              <CircleIcons icon={faEnvelope} type="email" email={user.email}></CircleIcons>
             </ActionsContainer>
           </AdditionalContainer>
         </PaneContainer>
@@ -61,20 +56,19 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
   );
 };
 
-const Circle = styled.div`
-  padding: 10px;
-  border-radius: 100px;
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-`;
-
 const ActionsContainer = styled.div`
-  min-width: 50px;
   display: grid;
   align-items: center;
   justify-content: center;
+
+  @media ${device.mobileL} {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+  }
 `;
 
 const AdditionalContainer = styled.div`
@@ -95,6 +89,10 @@ const PaneContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+
+  @media ${device.mobileL} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const AboutText = styled.p`
@@ -106,6 +104,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 50px;
+  @media ${device.mobileL} {
+    padding: 0;
+  }
 `;
 
 const Pane = styled.div`
