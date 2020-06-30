@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import BioInfo from './BioInfo';
 import { CategoryTitle } from '../../atoms/CategoryTitle/index';
 import InfoItem from '../../molecules/InfoItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../../shared/mediaQueries';
 import CircleIcons from '../../atoms/ClickableCircleIcons/index';

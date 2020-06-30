@@ -12,7 +12,9 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/">
-              <h1>Hello world</h1>
+              <div style={{ alignItems: 'center', justifyContent: 'center', flex: 1, display: 'flex', padding: 50 }}>
+                <h1>Work in progress. Stay tuned.</h1>
+              </div>
             </Route>
             <Route path="/scan">
               <ScanPage></ScanPage>

@@ -8,12 +8,9 @@ interface BioInfoProps {
   user: UserData;
 }
 
-const billGatesAvatarUrl =
-  'https://images.squarespace-cdn.com/content/v1/56b75f108a65e2ee4f2f2bde/1455557293033-S86RZZK28KMB9LN01U0I/ke17ZwdGBToddI8pDm48kLVlQsWnKb8yQ-njTGvvwVtZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpywYmA9JcIkVfR2Sj3VHhbJNNdOSzy2vOZOnpP4GuMAFuTLNfwXZswKXyR9JPuUs_s/image-asset.jpeg?format=1000w';
-
 const BioInfo: React.FC<BioInfoProps> = ({ user }) => {
   const avatarUrl = user.avatarUrl ?? Avatar;
-  const quote = user.quoute ?? 'I don’t like being pooped at';
+  // const quote = user.quoute ?? 'I don’t like being pooped at';
   const speciality = user.speciality;
   const company = user.companyName ? ' at ' + user.companyName : '';
   const position = speciality + company;
@@ -48,11 +45,11 @@ const BioContainer = styled.div`
   /* grid-row-gap: 15px; */
 `;
 
-const Quote = styled.h3`
-  font-size: 1.5rem;
-  font-weight: lighter;
-  color: #b7b7b7;
-`;
+// const Quote = styled.h3`
+//   font-size: 1.5rem;
+//   font-weight: lighter;
+//   color: #b7b7b7;
+// `;
 
 const Name = styled.h1`
   font-weight: bold;
