@@ -33,8 +33,8 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
             <ContactsContainer>
               <div>
                 <CategoryTitle>Contacts</CategoryTitle>
-                <InfoItem title="E-mail" value="massalin@inbox.ru"></InfoItem>
-                <InfoItem title="Phone" value="+77019998892"></InfoItem>
+                <InfoItem title="E-mail" value={user.email}></InfoItem>
+                <InfoItem title="Phone" value={user.phoneNumber}></InfoItem>
               </div>
               {
                 //   <div>
