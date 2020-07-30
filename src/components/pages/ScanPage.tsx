@@ -3,7 +3,6 @@ import useQuery from '../../utils/hooks/useQuery';
 import { db } from '../../services/firebase';
 import { UserData } from '../../shared/user.types';
 import PersonCard from '../organisms/PersonCard';
-import { domainToASCII } from 'url';
 
 const ScanPage = () => {
   let query = useQuery();
