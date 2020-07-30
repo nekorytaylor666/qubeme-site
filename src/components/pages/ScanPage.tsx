@@ -3,6 +3,7 @@ import useQuery from '../../utils/hooks/useQuery';
 import { db } from '../../services/firebase';
 import { UserData } from '../../shared/user.types';
 import PersonCard from '../organisms/PersonCard';
+import { domainToASCII } from 'url';
 
 const ScanPage = () => {
   let query = useQuery();
@@ -34,6 +35,7 @@ const ScanPage = () => {
     const setUserData = async () => {
       const data = await getData(param);
       if (data) {
+        console.log(data);
         setUser({
           fullName: data.fullName,
           cardId: data.cardId,
@@ -44,6 +46,9 @@ const ScanPage = () => {
           uid: data.uid,
           bio: data.bio,
           companyName: data.companyName,
+          phone2: data.phone2,
+          adress: data.address,
+          web: data.web,
         });
       }
     };
@@ -54,6 +59,7 @@ const ScanPage = () => {
   return (
     <div>
       {error ?? ''}
+
       {user ? <PersonCard user={user} /> : null}
     </div>
   );

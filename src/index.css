@@ -2,6 +2,7 @@ body {
 	font-family: 'URW Geometric', sans-serif;
 	/* font-family: 'Source Sans Pro', sans-serif; */
 	font-size: 12px;
+	max-width: 100%;
 }
 
 * {

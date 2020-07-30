@@ -35,11 +35,13 @@ const PropertyValue = styled.span`
   font-size: 1.5rem;
   color: black;
   font-weight: lighter;
+  width: auto;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 `;
 export default InfoItem;

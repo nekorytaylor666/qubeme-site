@@ -13,4 +13,7 @@ export interface UserData {
   age?: number;
   bio?: string;
   companyName?: string;
+  phone2?: string;
+  adress?: string;
+  web?: string;
 }

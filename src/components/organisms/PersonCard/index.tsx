@@ -13,7 +13,7 @@ interface PersonCardProps {
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
-  console.log(user.email);
+  console.log(user);
   return (
     <Wrapper>
       <Pane>
@@ -35,14 +35,13 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
                 <CategoryTitle>Contacts</CategoryTitle>
                 <InfoItem title="E-mail" value={user.email}></InfoItem>
                 <InfoItem title="Phone" value={user.phoneNumber}></InfoItem>
+                {user.phone2 ? <InfoItem title="Phone 2" value={user.phone2}></InfoItem> : null}
               </div>
-              {
-                //   <div>
-                //   <CategoryTitle>Social Media</CategoryTitle>
-                //   <InfoItem title="Instagram" value="@isasasasasas"></InfoItem>
-                //   <InfoItem title="VK" value="@isasasasasas"></InfoItem>
-                // </div>
-              }
+              <div>
+                <CategoryTitle>Additional info</CategoryTitle>
+                {user.adress ? <InfoItem title="Adress" value={user.adress}></InfoItem> : null}
+                {user.web ? <InfoItem title="Website" value={user.web}></InfoItem> : null}
+              </div>
             </ContactsContainer>
             <ActionsContainer>
               <CircleIcons icon={faPhoneAlt} type="phone" phone={user.phoneNumber}></CircleIcons>
@@ -95,7 +94,7 @@ const PaneContainer = styled.div`
 `;
 
 const AboutText = styled.p`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: lighter;
 `;
 
