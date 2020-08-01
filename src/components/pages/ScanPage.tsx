@@ -48,6 +48,7 @@ const ScanPage = () => {
           phone2: data.phone2,
           adress: data.address,
           web: data.web,
+          photoUrl: data.photoUrl,
         });
       }
     };

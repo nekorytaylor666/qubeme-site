@@ -16,4 +16,5 @@ export interface UserData {
   phone2?: string;
   adress?: string;
   web?: string;
+  photoUrl?: string;
 }

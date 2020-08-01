@@ -9,7 +9,8 @@ interface BioInfoProps {
 }
 
 const BioInfo: React.FC<BioInfoProps> = ({ user }) => {
-  const avatarUrl = user.avatarUrl ?? Avatar;
+  const avatarUrl = user.photoUrl ?? Avatar;
+  console.log(user.photoUrl);
   // const quote = user.quoute ?? 'I don’t like being pooped at';
   const speciality = user.speciality;
   const company = user.companyName ? ' at ' + user.companyName : '';
