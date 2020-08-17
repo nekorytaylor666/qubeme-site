@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import BioInfo from './BioInfo';
 import { CategoryTitle } from '../../atoms/CategoryTitle/index';
 import InfoItem from '../../molecules/InfoItem';
-import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt, faEnvelope, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../../shared/mediaQueries';
 import CircleIcons from '../../atoms/ClickableCircleIcons/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SizedBox } from '../../molecules/InfoItem';
 
 interface PersonCardProps {
   user: UserData;
@@ -48,11 +50,32 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
               <CircleIcons icon={faEnvelope} type="email" email={user.email}></CircleIcons>
             </ActionsContainer>
           </AdditionalContainer>
+          <AddToContacts href={`https://rocky-coast-04216.herokuapp.com/card/${user.uid}`}>
+            <span>Add to contacts</span>
+            <SizedBox width={10}></SizedBox>
+            <FontAwesomeIcon icon={faUserPlus} color="white" size={'2x'}></FontAwesomeIcon>
+          </AddToContacts>
         </PaneContainer>
       </Pane>
     </Wrapper>
   );
 };
+
+const AddToContacts = styled.a`
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+  border-radius: 1em;
+  background-color: #6550f7;
+
+  span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+`;
 
 const ActionsContainer = styled.div`
   display: grid;
