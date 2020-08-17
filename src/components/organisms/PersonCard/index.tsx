@@ -137,6 +137,7 @@ const Pane = styled.div`
   border-radius: 20px;
   row-gap: 10px;
   padding: 20px;
+  margin-top: 20px;
 `;
 
 export default PersonCard;

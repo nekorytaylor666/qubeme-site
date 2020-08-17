@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const Header = () => {
   return (
     <HeaderContainer>
-      <div style={{ padding: 20 }}>
-        <svg width="148" height="48" viewBox="0 0 148 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div style={{ padding: 10 }}>
+        <svg width="148" height="30" viewBox="0 0 148 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M44.2069 0.299942H3.52949C1.58021 0.299942 0 1.88015 0 3.82943V43.0659C0 45.0152 1.58021 46.5954 3.52949 46.5954H46.968L38.9126 42.5309H3.99768V4.35271H43.7129V38.181L47.7364 45.8269V3.82943C47.7364 1.88015 46.1562 0.299942 44.2069 0.299942Z"
             fill="white"
@@ -43,7 +43,7 @@ const Header = () => {
 };
 
 const HeaderContainer = styled.div`
-  min-height: 48px;
+  min-height: 2rem;
   background-color: purple;
   display: flex;
   justify-content: center;
