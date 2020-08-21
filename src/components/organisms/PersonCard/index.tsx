@@ -1,21 +1,56 @@
 import React from 'react';
-import { UserData } from '../../../shared/user.types';
+import { UserData, Socials } from '../../../shared/user.types';
 import styled from 'styled-components';
 import BioInfo from './BioInfo';
 import { CategoryTitle } from '../../atoms/CategoryTitle/index';
 import InfoItem from '../../molecules/InfoItem';
-import { faPhoneAlt, faEnvelope, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt, faEnvelope, faUserPlus, IconDefinition, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../../shared/mediaQueries';
 import CircleIcons from '../../atoms/ClickableCircleIcons/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SizedBox } from '../../molecules/InfoItem';
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faSkype,
+  faSnapchat,
+  faTelegram,
+  faTwitter,
+  faViber,
+  faVk,
+  faWhatsapp,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 
 interface PersonCardProps {
   user: UserData;
 }
 
+const socialToIcon = (social: keyof Socials) => {
+  type Icon = Record<keyof Socials, IconDefinition>;
+  const icons: Icon = {
+    facebook: faFacebook,
+    whatsapp: faWhatsapp,
+    telegram: faTelegram,
+    viber: faViber,
+    instagram: faInstagram,
+    linkedin: faLinkedin,
+    skype: faSkype,
+    snapchat: faSnapchat,
+    twitter: faTwitter,
+    vk: faVk,
+    youtube: faYoutube,
+  };
+  return icons[social];
+};
+
+const getKeyValue = <T extends object, U extends keyof T>(key: U) => (obj: T) => obj[key];
+
 const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
   console.log(user);
+  const socials = Object.keys(user.socials);
+  const socialsKeys = socials;
   return (
     <Wrapper>
       <Pane>
@@ -56,10 +91,39 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
             <FontAwesomeIcon icon={faUserPlus} color="white" size={'2x'}></FontAwesomeIcon>
           </AddToContacts>
         </PaneContainer>
+        <div style={{ height: 20 }}></div>
+        <SocialsContainer>
+          {socials.map((social) => {
+            const socialValue = getKeyValue<Socials, keyof Socials>(social as keyof Socials)(user.socials);
+            const socialType = social;
+            const socialIcon = socialToIcon(socialType as keyof Socials);
+            return socialValue ? (
+              <SocialItem>
+                <FontAwesomeIcon icon={socialIcon} color="#6550f7"></FontAwesomeIcon>
+                <SizedBox width={10}></SizedBox>
+                <span>{socialValue}</span>
+              </SocialItem>
+            ) : null;
+          })}
+        </SocialsContainer>
       </Pane>
     </Wrapper>
   );
 };
+
+const SocialItem = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+`;
+
+const SocialsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+`;
 
 const AddToContacts = styled.a`
   text-decoration: none;

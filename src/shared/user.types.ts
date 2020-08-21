@@ -17,4 +17,19 @@ export interface UserData {
   adress?: string;
   web?: string;
   photoUrl?: string;
+  socials: Socials;
+}
+
+export interface Socials {
+  skype?: string;
+  telegram?: string;
+  viber?: string;
+  whatsapp?: string;
+  vk?: string;
+  instagram?: string;
+  facebook?: string;
+  linkedin?: string;
+  snapchat?: string;
+  twitter?: string;
+  youtube?: string;
 }

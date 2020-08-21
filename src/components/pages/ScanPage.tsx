@@ -49,6 +49,19 @@ const ScanPage = () => {
           adress: data.address,
           web: data.web,
           photoUrl: data.photoUrl,
+          socials: {
+            skype: data.skype,
+            telegram: data.telegram,
+            viber: data.viber,
+            whatsapp: data.whatsapp,
+            vk: data.vk,
+            instagram: data.instagram,
+            facebook: data.facebook,
+            linkedin: data.linkedin,
+            snapchat: data.snapchat,
+            twitter: data.twitter,
+            youtube: data.youtube,
+          },
         });
       }
     };
