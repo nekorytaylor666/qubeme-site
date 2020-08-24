@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BioInfo from './BioInfo';
 import { CategoryTitle } from '../../atoms/CategoryTitle/index';
 import InfoItem from '../../molecules/InfoItem';
-import { faPhoneAlt, faEnvelope, faUserPlus, IconDefinition, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt, faEnvelope, faUserPlus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../../shared/mediaQueries';
 import CircleIcons from '../../atoms/ClickableCircleIcons/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,7 +50,6 @@ const getKeyValue = <T extends object, U extends keyof T>(key: U) => (obj: T) =>
 const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
   console.log(user);
   const socials = Object.keys(user.socials);
-  const socialsKeys = socials;
   return (
     <Wrapper>
       <Pane>
