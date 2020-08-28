@@ -84,11 +84,6 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
               <CircleIcons icon={faEnvelope} type="email" email={user.email}></CircleIcons>
             </ActionsContainer>
           </AdditionalContainer>
-          <AddToContacts href={`https://rocky-coast-04216.herokuapp.com/card/${user.uid}`}>
-            <span>Add to contacts</span>
-            <SizedBox width={10}></SizedBox>
-            <FontAwesomeIcon icon={faUserPlus} color="white" size={'2x'}></FontAwesomeIcon>
-          </AddToContacts>
         </PaneContainer>
         <div style={{ height: 20 }}></div>
         <SocialsContainer>
@@ -105,6 +100,12 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
             ) : null;
           })}
         </SocialsContainer>
+        <div style={{ height: 20 }}></div>
+        <AddToContacts href={`https://rocky-coast-04216.herokuapp.com/card/${user.uid}`}>
+          <span>Add to contacts</span>
+          <SizedBox width={10}></SizedBox>
+          <FontAwesomeIcon icon={faUserPlus} color="white" size={'2x'}></FontAwesomeIcon>
+        </AddToContacts>
       </Pane>
     </Wrapper>
   );
