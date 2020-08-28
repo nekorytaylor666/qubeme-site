@@ -67,11 +67,28 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
           </div>
           <AdditionalContainer>
             <ContactsContainer>
-              <div>
+              <div style={{ display: 'grid', gridRowGap: 10 }}>
                 <CategoryTitle>Contacts</CategoryTitle>
-                <InfoItem title="E-mail" value={user.email}></InfoItem>
-                <InfoItem title="Phone" value={user.phoneNumber}></InfoItem>
-                {user.phone2 ? <InfoItem title="Phone 2" value={user.phone2}></InfoItem> : null}
+                <InfoItem
+                  title="E-mail"
+                  value={user.email}
+                  buttonElement={() => (
+                    <CircleIcons icon={faEnvelope} type="email" email={user.email}></CircleIcons>
+                  )}></InfoItem>
+                <InfoItem
+                  title="Phone"
+                  value={user.phoneNumber}
+                  buttonElement={() => (
+                    <CircleIcons icon={faPhoneAlt} type="phone" phone={user.phoneNumber}></CircleIcons>
+                  )}></InfoItem>
+                {user.phone2 ? (
+                  <InfoItem
+                    title="Phone 2"
+                    value={user.phone2}
+                    buttonElement={() => (
+                      <CircleIcons icon={faPhoneAlt} type="phone" phone={user.phone2}></CircleIcons>
+                    )}></InfoItem>
+                ) : null}
               </div>
               <div>
                 <CategoryTitle>Additional info</CategoryTitle>
@@ -79,10 +96,6 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
                 {user.web ? <InfoItem title="Website" value={user.web}></InfoItem> : null}
               </div>
             </ContactsContainer>
-            <ActionsContainer>
-              <CircleIcons icon={faPhoneAlt} type="phone" phone={user.phoneNumber}></CircleIcons>
-              <CircleIcons icon={faEnvelope} type="email" email={user.email}></CircleIcons>
-            </ActionsContainer>
           </AdditionalContainer>
         </PaneContainer>
         <div style={{ height: 20 }}></div>
@@ -141,21 +154,6 @@ const AddToContacts = styled.a`
   }
 `;
 
-const ActionsContainer = styled.div`
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  @media ${device.mobileL} {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px;
-  }
-`;
-
 const AdditionalContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -167,6 +165,7 @@ const ContactsContainer = styled.div`
   display: grid;
   align-items: flex-start;
   grid-row-gap: 20px;
+  width: 100%;
 `;
 
 const PaneContainer = styled.div`
