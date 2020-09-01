@@ -45,6 +45,27 @@ const socialToIcon = (social: keyof Socials) => {
   return icons[social];
 };
 
+const socialToLink = (type: keyof Socials, value: string) => {
+  type Link = Record<keyof Socials, string>;
+
+  const links: Link = {
+    skype: '',
+    snapchat: '',
+    viber: '',
+    telegram: 'https://t.me/',
+    whatsapp: 'https://wa.me/',
+    vk: 'https://vk.com/',
+    instagram: 'https://instagram.com/',
+    facebook: 'https://facebook.com/',
+    linkedin: 'https://linkedin.com/in/',
+    twitter: 'https://twitter.com/',
+    youtube: 'https://youtube.com/c/',
+  };
+  const link = links[type] + value;
+  console.log(links[type], link);
+  return link;
+};
+
 const getKeyValue = <T extends object, U extends keyof T>(key: U) => (obj: T) => obj[key];
 
 const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
@@ -104,8 +125,9 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
             const socialValue = getKeyValue<Socials, keyof Socials>(social as keyof Socials)(user.socials);
             const socialType = social;
             const socialIcon = socialToIcon(socialType as keyof Socials);
+            const socialLink = socialToLink(socialType as keyof Socials, socialValue ?? '');
             return socialValue ? (
-              <SocialItem>
+              <SocialItem href={socialLink}>
                 <FontAwesomeIcon icon={socialIcon} color="#6550f7"></FontAwesomeIcon>
                 <SizedBox width={10}></SizedBox>
                 <span>{socialValue}</span>
@@ -124,10 +146,12 @@ const PersonCard: React.FC<PersonCardProps> = ({ user }) => {
   );
 };
 
-const SocialItem = styled.div`
+const SocialItem = styled.a`
   display: flex;
   align-items: center;
   font-size: 1.5rem;
+  text-decoration: none;
+  color: inherit;
 `;
 
 const SocialsContainer = styled.div`
